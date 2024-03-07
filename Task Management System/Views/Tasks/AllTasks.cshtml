@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Tasks>
+@{
+    ViewData["Title"] = "All Tasks";
+    Layout = "~/Views/Shared/_Tasks_Layout.cshtml";
+}
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1 class="text-primary">Tasks List</h1>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Tasks" asp-action="Upsert" class="btn btn-primary mx-3">
+                <i class="bi bi-plus-circle"></i> &nbsp; Create New Task
+            </a>
+        </div>
+    </div>
+    <br />
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Task Table
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Task Title</th>
+                        <th>Description</th>
+                        <th>Priority</th>
+                        <th>Assign Date</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Task Title</th>
+                        <th>Description</th>
+                        <th>Priority</th>
+                        <th>Assign Date</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var tasks in Model)
+                    {
+                        <tr>
+                            <th>@tasks.TaskTitle</th>
+                            <th>@tasks.Description</th>
+                            <th>@tasks.Priority_Id</th>
+                            <th>@tasks.AssignDate</th>
+                            <th>@tasks.DueDate</th>
+                            <th>@tasks.Status.Name</th>
+                            <th>
+                                <a asp-controller="Tasks" asp-action="Upsert" asp-route-id="@tasks.Id" class="btn btn-primary mx-3 btn-dark"><i class="bi bi-pencil-square"></i></a>
+                                <a asp-controller="Tasks" asp-action="Delete" asp-route-id="@tasks.Id" class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i></a>
+                            </th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/front/js/tasks.js"></script>
+}

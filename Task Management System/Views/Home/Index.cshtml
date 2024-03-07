@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Learning ASP.NET Core </h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">ASP.NET Core is a popular, open-source, cross-platform framework developed by Microsoft for building web applications. It's a significant evolution of Microsoft's ASP.NET framework, offering various improvements and advantages.</p>
+        <p class="lead mb-4">Learning ASP.NET Core involves understanding its architecture, MVC pattern, middleware, dependency injection, and various libraries and tools available in the ecosystem. Microsoft provides extensive documentation, tutorials, and resources for beginners to start with ASP.NET Core development. Additionally, online courses and community forums can be valuable resources for learning and mastering this framework.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a class="btn btn-primary btn-lg px-4 gap-3" asp-controller="Admin" asp-action="AdminLogin">Admin Log in</a>
+            <a class="btn btn-primary btn-lg px-4 gap-3" asp-controller="Manager" asp-action="ManagerLogin">Manager Log in</a>
+            <a class="btn btn-primary btn-lg px-4 gap-3" asp-controller="TeamLead" asp-action="TeamLeadLogin">Team Lead Log in</a>
+            <a class="btn btn-primary btn-lg px-4 gap-3" asp-controller="TeamMember" asp-action="TeamMemberLogin">Team Member Log in</a>
+        </div>
+    </div>
+</div>

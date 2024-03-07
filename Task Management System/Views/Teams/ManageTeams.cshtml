@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<Task_Management_System.ViewModels.TeamVM>
+
+@{
+	ViewData["Title"] = "Teams";
+	Layout = "~/Views/Shared/_Tasks_Layout.cshtml";
+}
+
+<h2>Teams</h2>
+<br />
+@foreach (var team in Model)
+{
+
+	<a asp-controller="Teams" asp-action="ShowTeamDetails" asp-route-Teamid="@team.Team_Id" class="btn btn-secondary" style="width:150px">
+		@team.Team_Name
+	</a>
+
+
+
+}
+
+<br />
+<br />
+<a asp-controller="Teams" asp-action="AddTeam" class="btn btn-primary" style="width:150px">
+	Create new Team
+</a>
+
+
+
+@section Scripts {
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
+
+

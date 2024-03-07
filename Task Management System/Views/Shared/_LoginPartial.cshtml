@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Task_Management_System.Areas.Identity.Data
+
+@inject SignInManager<Task_Management_SystemUser> SignInManager
+@inject UserManager<Task_Management_SystemUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+    {
+        var adminDashboardUrl = Url.Action("AdminDashboard", "Admin");
+        <script>
+            window.location.href = '@adminDashboardUrl';
+        </script>
+@*         <li class="nav-item">
+            <a id="manage" class="nav-link text-lite" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+        </li>
+        <li class="nav-item">
+            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button id="logout" type="submit" class="nav-link btn btn-link text-lite border-0">Logout</button>
+            </form>
+        </li>  *@
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-lite" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-lite" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
+</ul>
+
